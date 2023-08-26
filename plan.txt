@@ -1,0 +1,44 @@
+AUTH
+Routes:
+1. /signup
+2. /login
+3. /forgot-password
+4. 
+
+POSTS
+Route:
+1. /post                   -- fetch all posts   (GET)
+2. /post                   -- create post       (POST)
+1. /post/:id               -- fetch particular post (GET)
+2. /post/delete/:id        -- delete post   (DELETE)
+3. /post/edit/:id          -- edit post     (PUT)
+4. /post/like/:id          -- like post     (PUT)
+
+USER
+1. /users                   -- fetch all users  (GET)
+2. /user                    -- fetch current user info  (GET)
+3. /user/:id                -- fetch particular user info   (GET)
+3. /user/:id                -- update particular user info  (PATCH)
+4. /user/delete             -- delete user  (DELETE)
+
+
+USER OBJECT: {
+    ID: String;
+    first_name: String;
+    last_name: String;
+    username: String;  
+}
+
+POST OBJECT: {
+    ID: String;
+    title: String;
+    body: String;
+    image?: String; (url)
+    video?: String;
+    createdAt: Date;
+    modifiedAt: Date;
+    creator: User;
+}
+
+
+

@@ -1,0 +1,38 @@
+Things I did for Typescript integration:
+1. install typescript, @types/node and @types/express
+2. create tsconfig.json thusly:
+    {
+	"compilerOptions": {
+		"module": "NodeNext",
+		"moduleResolution": "NodeNext",
+		"target": "ES2020",
+		"sourceMap": true,
+		"outDir": "dist",
+		"noPropertyAccessFromIndexSignature": false
+	},
+	"include": ["src/**/*", "./global.d.ts"],
+	"typeRoots": ["node_modules/@types", "./global.d.ts"]
+}
+
+3. installed nodemon and ts-node for live reload
+    Note: i had to tweak package.json thusly:
+    "scripts": {
+		"build": "tsc",
+		"dev": "nodemon --esm src/index.ts"
+	},
+
+4. fix .env
+    create global.d.ts thus:
+    declare global {
+	    namespace NodeJS {
+		        interface ProcessEnv {
+			    NODE_ENV: "development" | "production";
+			    PORT: string;
+			    DB_HOST: string;
+		    }
+	    }
+    }
+
+    export {};
+
+    then tweak tsconfig.json accordingly
