@@ -36,3 +36,8 @@ Things I did for Typescript integration:
     export {};
 
     then tweak tsconfig.json accordingly
+
+
+
+PS: I also learned the MVC pattern here. Setup is pretty cool
+Also OAuth

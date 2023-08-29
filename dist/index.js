@@ -1,8 +1,15 @@
 import { config } from "dotenv";
 import express from "express";
+import connectDB from "./config/db.js";
 config();
 const app = express();
-app.listen(3000, () => {
-	console.log(process.env.PORT);
+connectDB()
+    .then(() => {
+    app.listen(process.env.PORT, () => {
+        console.log(process.env.PORT);
+    });
+})
+    .catch((err) => {
+    console.error(err);
 });
 //# sourceMappingURL=index.js.map

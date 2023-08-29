@@ -1,9 +1,9 @@
 AUTH
 Routes:
-1. /signup
-2. /login
-3. /forgot-password
-4. 
+1. /auth/signup              (POST)
+2. /auth/login               (POST)
+3. /auth/forgot-password     (POST)
+4. /auth/otp                 (POST)
 
 POSTS
 Route:
@@ -23,14 +23,16 @@ USER
 
 
 USER OBJECT: {
-    ID: String;
+    _id: String;         (use ObjectId)
     first_name: String;
     last_name: String;
+    email: String;
     username: String;  
+	created_at: Date;
 }
 
 POST OBJECT: {
-    ID: String;
+    _id: String;     (use ObjectId)
     title: String;
     body: String;
     image?: String; (url)
