@@ -3,6 +3,7 @@ import UserModel from "../models/UserModel.js";
 import jwt from "jsonwebtoken";
 import { randomBytes } from "crypto";
 import {
+	generateSignedToken,
 	hashPassword,
 	validatePassword,
 } from "../middleware/auth.middleware.js";
@@ -32,26 +33,12 @@ export const loginController = {
 			return;
 		}
 
-		let token;
-
 		// creating a jwt token
-		try {
-			token = jwt.sign(
-				{
-					userId: existingUser._id,
-					username: existingUser.username,
-					email: existingUser.email,
-				},
-				process.env.JWT_SECRET,
-				{
-					expiresIn: "1h",
-				}
-			);
-		} catch (error) {
-			console.error(error);
+		let token = generateSignedToken(existingUser).catch((err) => {
+			console.error(err);
 			res.status(500).json({ message: "Server Error" });
 			return;
-		}
+		});
 
 		// removing password from the response
 		const { password: userPassword, ...rest } = existingUser?._doc;
@@ -98,24 +85,11 @@ export const signupController = {
 		}
 
 		// creating a jwt token
-		let token;
-		try {
-			token = jwt.sign(
-				{
-					userId: newUser._id,
-					username: newUser.username,
-					email: newUser.email,
-				},
-				process.env.JWT_SECRET,
-				{
-					expiresIn: "1h",
-				}
-			);
-		} catch (error) {
-			console.error(error);
+		let token = generateSignedToken(newUser).catch((err) => {
+			console.error(err);
 			res.status(500).json({ message: "Server Error" });
 			return;
-		}
+		});
 
 		// removing password from the response
 		const { password: userPassword, ...rest } = (newUser as any)?._doc;

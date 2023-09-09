@@ -1,4 +1,6 @@
 import bcrypt from "bcrypt";
+import { IUser } from "../types/interfaces.js";
+import jwt from "jsonwebtoken";
 
 export const hashPassword = async (password) => {
 	try {
@@ -20,4 +22,18 @@ export const validatePassword = async (
 		console.error(error);
 	}
 	// return false;
+};
+
+export const generateSignedToken = async (userObj: IUser) => {
+	return await jwt.sign(
+		{
+			ID: userObj.ID,
+			username: userObj.username,
+			email: userObj.email,
+		},
+		process.env.JWT_SECRET,
+		{
+			expiresIn: "1h",
+		}
+	);
 };
