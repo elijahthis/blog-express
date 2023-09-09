@@ -5,6 +5,7 @@ declare global {
 			PORT: string;
 			DB_HOST: string;
 			MONGODB_URI: string;
+			JWT_SECRET: string;
 		}
 	}
 }

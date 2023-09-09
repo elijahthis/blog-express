@@ -4,6 +4,7 @@ export interface IUser {
 	last_name: String;
 	email: String;
 	username: String;
+	password: String;
 	created_at: Date;
 }
 
