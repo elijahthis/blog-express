@@ -53,7 +53,9 @@ export const loginController = {
 			return;
 		}
 
-		res.status(200).json({ success: true, token, data: existingUser });
+		// removing password from the response
+		const { password: userPassword, ...rest } = existingUser?._doc;
+		res.status(200).json({ success: true, token, data: rest });
 		return;
 	},
 };
@@ -115,7 +117,9 @@ export const signupController = {
 			return;
 		}
 
-		res.status(200).json({ success: true, token, data: newUser });
+		// removing password from the response
+		const { password: userPassword, ...rest } = (newUser as any)?._doc;
+		res.status(200).json({ success: true, token, data: rest });
 		return;
 	},
 };
