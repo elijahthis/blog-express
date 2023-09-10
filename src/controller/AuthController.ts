@@ -6,7 +6,7 @@ import {
 	generateSignedToken,
 	hashPassword,
 	validatePassword,
-} from "../middleware/auth.middleware.js";
+} from "../helpers/auth.js";
 
 export const loginController = {
 	post: async (req: express.Request, res: express.Response) => {

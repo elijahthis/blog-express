@@ -5,6 +5,8 @@ import helmet from "helmet";
 
 import connectDB from "./config/db.js";
 import AuthRoutes from "./routes/Auth.js";
+import UserRoutes from "./routes/User.js";
+import UsersRoutes from "./routes/Users.js";
 import jwt from "jsonwebtoken";
 import { checkJwt } from "./middleware/auth.middleware.js";
 
@@ -29,6 +31,9 @@ app.use(checkJwt);
 app.get("/authed", (req, res) => {
 	res.status(200).json({ message: "Authed" });
 });
+
+app.use("/user", UserRoutes);
+app.use("/users", UsersRoutes);
 
 // -------------------- Connect to database, then start server --------------------
 connectDB()

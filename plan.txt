@@ -17,9 +17,11 @@ Route:
 USER
 1. /users                   -- fetch all users  (GET)
 2. /user                    -- fetch current user info  (GET)
-3. /user/:id                -- fetch particular user info   (GET)
-3. /user/:id                -- update particular user info  (PATCH)
-4. /user/delete             -- delete user  (DELETE)
+3. /user                    -- update current user info  (PATCH)
+4. /user                    -- delete current user  (DELETE)
+5. /user/:id                -- fetch particular user info   (GET)
+6. /user/:id                -- update particular user info  (PATCH)
+7. /user/:id                -- delete particular user  (DELETE)
 
 
 USER OBJECT: {
