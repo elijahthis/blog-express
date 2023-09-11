@@ -11,7 +11,7 @@ router.get("/", currentUserController.get);
 router.patch("/", currentUserController.patch);
 router.delete("/", currentUserController.delete);
 
-// -------------------- Current User routes --------------------
+// -------------------- Particular User routes --------------------
 router.get("/:id", particularUserController.get);
 router.patch("/:id", particularUserController.patch);
 router.delete("/:id", particularUserController.delete);

@@ -8,6 +8,12 @@ const PostSchema = new Schema<IPost>({
 	image: String,
 	video: String,
 	created_at: { type: Date, required: true },
-	modified_at: { type: Date, required: true },
 	creator: { type: String, required: true },
+	likes: { type: [String], required: true },
+	comments: {
+		type: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
+		required: true,
+	},
 });
+
+export default model<IPost>("Post", PostSchema);

@@ -17,4 +17,14 @@ export interface IPost {
 	created_at: Date;
 	modified_at: Date;
 	creator: IUser;
+	likes: String[];
+	comments: IComment[];
+}
+
+export interface IComment {
+	user: String;
+	body: String;
+	created_at: Date;
+	comments: IComment[];
+	parent_id: String;
 }

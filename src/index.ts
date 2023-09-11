@@ -7,6 +7,7 @@ import connectDB from "./config/db.js";
 import AuthRoutes from "./routes/Auth.js";
 import UserRoutes from "./routes/User.js";
 import UsersRoutes from "./routes/Users.js";
+import PostRoutes from "./routes/Post.js";
 import jwt from "jsonwebtoken";
 import { checkJwt } from "./middleware/auth.middleware.js";
 
@@ -34,6 +35,7 @@ app.get("/authed", (req, res) => {
 
 app.use("/user", UserRoutes);
 app.use("/users", UsersRoutes);
+app.use("/post", PostRoutes);
 
 // -------------------- Connect to database, then start server --------------------
 connectDB()

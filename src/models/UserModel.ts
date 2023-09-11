@@ -14,4 +14,4 @@ const UserSchema = new Schema<IUser>({
 	created_at: { type: Date, required: true },
 });
 
-export default model("User", UserSchema);
+export default model<IUser>("User", UserSchema);

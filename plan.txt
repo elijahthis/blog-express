@@ -8,11 +8,13 @@ Routes:
 POSTS
 Route:
 1. /post                   -- fetch all posts   (GET)
+1. /post                   -- delete all posts   (DELETE)
 2. /post                   -- create post       (POST)
-1. /post/:id               -- fetch particular post (GET)
-2. /post/delete/:id        -- delete post   (DELETE)
-3. /post/edit/:id          -- edit post     (PUT)
-4. /post/like/:id          -- like post     (PUT)
+3. /post/:id               -- fetch particular post (GET)
+4. /post/:id               -- edit particular post  (PATCH)
+5. /post/:id               -- delete particular post   (DELETE)
+6. /post/like/:id          -- like post     (PATCH)
+7. /post/comment/:id       -- comment on post     (PATCH)
 
 USER
 1. /users                   -- fetch all users  (GET)
@@ -39,10 +41,15 @@ POST OBJECT: {
     body: String;
     image?: String; (url)
     video?: String;
-    createdAt: Date;
-    modifiedAt: Date;
+    created_at: Date;
     creator: User;
+    likes: User[]
+    comments: Comment[]
 }
 
-
-
+COMMENT OBJECT: {
+    text: String;
+    user: User;
+    likes: User[]
+    comments: Comment[]
+}

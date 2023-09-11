@@ -55,7 +55,9 @@ export const allUsersController = {
 	get: async (req, res) => {
 		const userList = await UserModel.find({});
 
-		res.status(200).json(userList.map((user) => removePassword(user.toJSON())));
+		return res
+			.status(200)
+			.json(userList.map((user) => removePassword(user.toJSON())));
 	},
 	delete: async (req, res) => {
 		try {
