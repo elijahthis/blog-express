@@ -1,4 +1,6 @@
+import { randomBytes } from "crypto";
 import PostModel from "../models/PostModel.js";
+import { IPost } from "../types/interfaces.js";
 
 export const allPostsController = {
 	get: async (req, res) => {
@@ -60,12 +62,14 @@ export const createPostController = {
 	post: async (req, res) => {
 		const { title, body, image, video } = req.body;
 
-		const newPost = new PostModel({
+		const newPost = new PostModel<IPost>({
+			ID: randomBytes(32).toString("hex"),
 			title,
 			body,
 			image,
 			video,
 			created_at: new Date(),
+			modified_at: new Date(),
 			creator: res.locals.user?.ID,
 			likes: [],
 			comments: [],
